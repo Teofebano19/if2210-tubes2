@@ -93,11 +93,11 @@ public class UserData {
         usrE.setAttributeNode(attr);
 
         Element level = doc.createElement("level");
-        level.appendChild(doc.createTextNode("1"));
+        level.appendChild(doc.createTextNode(pengguna.getLevel() + ""));
         usrE.appendChild(level);
 
         Element exp = doc.createElement("exp");
-        exp.appendChild(doc.createTextNode("0"));
+        exp.appendChild(doc.createTextNode(pengguna.getExp() + ""));
         usrE.appendChild(exp);
 
         
