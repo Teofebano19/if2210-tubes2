@@ -1,7 +1,6 @@
 package travelingcmd;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Quest {
@@ -41,6 +40,10 @@ public class Quest {
         Deskripsi = newDescription;
     }
 
+    public List<Lokasi> getLocation() {
+        return listLokasi;
+    }
+    
     public void showLocations() {
         for(Lokasi tempLokasi : listLokasi) {
             tempLokasi.showLocation();
@@ -56,7 +59,28 @@ public class Quest {
         }
     }
     
+    public boolean isLocationsMember(String Location) {
+        int i;
+        for(i=0; i < listLokasi.size(); i++){
+            if (listLokasi.get(i).getLocationName().equalsIgnoreCase(Location)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean isLocationsMember(Lokasi Location) {
+        int i;
+        for(i=0; i < listLokasi.size(); i++){
+            if (listLokasi.get(i).getLocationName().equalsIgnoreCase(Location.getLocationName())){
+                return true;
+            }
+        }
+        return false;
+    }
+            
     public void showQuest() {
+        System.out.println("----------------------INFO QUEST----------------------");
         System.out.println("            "+"QUEST AREA "+Area);
         System.out.println("Deskripsi : ");
         System.out.println("            "+Deskripsi);
@@ -65,8 +89,9 @@ public class Quest {
             System.out.print("            ");
             tempLokasi.showLocation();
         }
+        System.out.println("------------------------------------------------------");
     }
-    
+   
     /*
     public void showDescriptions() {
         int longestLength;

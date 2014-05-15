@@ -21,6 +21,28 @@ public class Pengguna {
     private long nextLevelExp;
     private List<Lokasi> listLokasiTerkunjungi;
     
+    private void setNextExpGenerator() {
+        nextLevelExp += Level*1000;
+    }
+    
+    private void levelUp() {
+        Level++;
+        setNextExpGenerator();
+    }
+    
+    private void upExp10() {
+        long temp = Exp+10;
+        if(temp > nextLevelExp) {
+            long nextLevelExptemp = nextLevelExp;
+            levelUp();
+            Exp = 0;
+            upExp10();
+        }
+        else {
+            Exp = temp;
+        }
+    }
+    
     public void setInit(int lv, long exp, String pass){
         Level = lv;
         Exp = exp;
@@ -43,25 +65,24 @@ public class Pengguna {
         }
     }
     
-    public boolean isLokValid(String lok){
+    public boolean isListLocationMember(String Location){
         int i;
-        
         for(i=0; i < listLokasiTerkunjungi.size(); i++){
-            if (listLokasiTerkunjungi.get(i).getLocationName().equalsIgnoreCase(lok)){
+            if (listLokasiTerkunjungi.get(i).getLocationName().equalsIgnoreCase(Location)){
                 return true;
             }
         }
-        
         return false;
     }
     
-    private void setNextExpGenerator() {
-        nextLevelExp += Level*1000;
-    }
-    
-    private void levelUp() {
-        Level++;
-        setNextExpGenerator();
+    public boolean isListLocationsMember(Lokasi Location) {
+        int i;
+        for(i=0; i < listLokasiTerkunjungi.size(); i++){
+            if (listLokasiTerkunjungi.get(i).getLocationName().equalsIgnoreCase(Location.getLocationName())){
+                return true;
+            }
+        }
+        return false;
     }
     
     public Pengguna(String initUsername,String initPassword) {
@@ -89,18 +110,7 @@ public class Pengguna {
         return nextLevelExp;
     }
     
-    public void upExp10() {
-        long temp = Exp+10;
-        if(temp > nextLevelExp) {
-            long nextLevelExptemp = nextLevelExp;
-            levelUp();
-            Exp = 0;
-            upExp10();
-        }
-        else {
-            Exp = temp;
-        }
-    }
+    
     
     /*
     public void upExp(long Experience) {
@@ -118,12 +128,28 @@ public class Pengguna {
     
     public void addVisitedLocation(Lokasi Location) {
         listLokasiTerkunjungi.add(Location);
+        upExp10();
+    }
+    
+    public void addVisitedLocationData(Lokasi Location) {
+        listLokasiTerkunjungi.add(Location);
     }
     
     public void userInfo() {
+        System.out.println("----------------------INFO PENGGUNA----------------------");
         System.out.println("Username : "+Username);
         System.out.println("LEVEL "+Level);
         System.out.println("Exp : "+Exp);
         System.out.println("Next Level Experience : "+nextLevelExp);
+        System.out.println(" : Lokasi yang sudah dikunjungi : ");
+        if(listLokasiTerkunjungi.size() > 0) {
+            for(Lokasi temp : listLokasiTerkunjungi) {
+                System.out.println("        "+temp.getLocationName());
+            }
+        }
+        else {
+            System.out.println("  Belum ada Lokasi yang dikunjungi");
+        }
+        System.out.println("---------------------------------------------------------");
     }
 }
