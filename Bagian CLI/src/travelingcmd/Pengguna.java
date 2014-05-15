@@ -21,7 +21,39 @@ public class Pengguna {
     private long nextLevelExp;
     private List<Lokasi> listLokasiTerkunjungi;
     
-    private static int JumlahPengguna = 0;
+    public void setInit(int lv, long exp, String pass){
+        Level = lv;
+        Exp = exp;
+        Password = pass;
+    }
+    
+    public String getUsername(){
+        return Username;
+    }
+    
+    public String getPassword(){
+        return Password;
+    }
+    
+    public Lokasi getLokasi(int i){
+        if (i >= listLokasiTerkunjungi.size()){
+            return null;
+        }else{
+            return listLokasiTerkunjungi.get(i);
+        }
+    }
+    
+    public boolean isLokValid(String lok){
+        int i;
+        
+        for(i=0; i < listLokasiTerkunjungi.size(); i++){
+            if (listLokasiTerkunjungi.get(i).getLocationName().equalsIgnoreCase(lok)){
+                return true;
+            }
+        }
+        
+        return false;
+    }
     
     private void setNextExpGenerator() {
         nextLevelExp += Level*1000;
@@ -40,7 +72,6 @@ public class Pengguna {
         nextLevelExp = 1000;
         listLokasiTerkunjungi = new ArrayList<Lokasi>();
         
-        JumlahPengguna++;
     }
     
     public void changePassword(String newPassword) {
@@ -50,7 +81,6 @@ public class Pengguna {
     public int getLevel() {
         return Level;
     }
-    
     public long getExp() {
         return Exp;
     }

@@ -17,6 +17,9 @@ public class TravelingCMD {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        UserData a = new UserData();
+        
+        
         Quest Q;
         Q = new Quest("Jakarta");
         Q.setArea(Q.getArea().toUpperCase());
@@ -27,11 +30,27 @@ public class TravelingCMD {
         
         Pengguna P;
         P = new Pengguna("Konda","CapeDah");
+        a.bacaFile(P);
         P.userInfo();
-        System.out.println("---------------------");
-        P.addVisitedLocation(new Lokasi("Ancol"));
-        P.upExp10();
-        P.userInfo();
-        System.out.println("---------------------");
+        
+        int i = 0;
+        Lokasi lok = P.getLokasi(i++);
+        while (lok != null){
+           System.out.println(lok.getLocationName());
+            
+            lok = P.getLokasi(i++);
+        }
+//        
+//        System.out.println("---------------------");
+//        P.addVisitedLocation(new Lokasi("Ancol"));
+//        P.upExp10();
+//        P.userInfo();
+//        System.out.println("---------------------");
+//        P.addLokasi(new Lokasi("Tai"));
+//        P.addLokasi(new Lokasi("Kuda"));
+//        P.addLokasi(new Lokasi("Bajingan"));
+        
+        
+        //a.writeUser(P);
     }  
 }
