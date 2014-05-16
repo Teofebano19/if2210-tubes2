@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package travelingcmd;
+package travelprof;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -57,7 +57,7 @@ public class UserData {
                     if (lok.getNodeType() == Node.ELEMENT_NODE) {
 
                             Element lokas = (Element) lok;
-                            pengguna.addVisitedLocationData(new Lokasi(lokas.getTextContent()));
+                            pengguna.addVisitedLocation(new Lokasi(lokas.getTextContent()));
 
                     }
             }
@@ -93,19 +93,11 @@ public class UserData {
         usrE.setAttributeNode(attr);
 
         Element level = doc.createElement("level");
-<<<<<<< HEAD
-        level.appendChild(doc.createTextNode(pengguna.getLevel()+""));
-        usrE.appendChild(level);
-
-        Element exp = doc.createElement("exp");
-        exp.appendChild(doc.createTextNode(pengguna.getExp()+""));
-=======
         level.appendChild(doc.createTextNode(pengguna.getLevel() + ""));
         usrE.appendChild(level);
 
         Element exp = doc.createElement("exp");
         exp.appendChild(doc.createTextNode(pengguna.getExp() + ""));
->>>>>>> 3c05e1e0d39b751a2f0fbbb2de9f19d0f9b51bd9
         usrE.appendChild(exp);
 
         
