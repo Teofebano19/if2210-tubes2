@@ -4,28 +4,21 @@
  * and open the template in the editor.
  */
 
-package travelprof;
-
-import javax.swing.UIManager;
+package stima;
 
 /**
  *
  * @author Andre
  */
-public class TravelProf {
+public class Stima {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        try{
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // mengganti tema aplikasi
-        }catch(Exception x){
-            
-        }
-        LoginForm login =  new LoginForm();
-        login.show();
+        NewJFrame a = new NewJFrame();
+        a.show();
     }
     
 }
