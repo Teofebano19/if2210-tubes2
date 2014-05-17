@@ -33,6 +33,16 @@ public class Pengguna {
         return Password;
     }
     
+    public boolean isListLocationMember(String Location){
+        int i;
+        for(i=0; i < listLokasiTerkunjungi.size(); i++){
+            if (listLokasiTerkunjungi.get(i).getLocationName().equalsIgnoreCase(Location)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public Lokasi getLokasi(int i){
         if (i >= listLokasiTerkunjungi.size()){
             return null;

@@ -63,15 +63,29 @@ public class Quest {
         }
     }
     
-    public void showQuest() {
-        System.out.println("            "+"QUEST AREA "+Area);
-        System.out.println("Deskripsi : ");
-        System.out.println("            "+Deskripsi);
-        System.out.println("Lokasi    : ");
-        for(Lokasi tempLokasi : listLokasi) {
-            System.out.print("            ");
-            tempLokasi.showLocation();
+    public boolean isLocationsMember(String Location) {
+        int i;
+        for(i=0; i < listLokasi.size(); i++){
+            if (listLokasi.get(i).getLocationName().equalsIgnoreCase(Location)){
+                return true;
+            }
         }
+        return false;
+    }
+    
+    public String showQuest() {
+        StringBuilder tmp = new StringBuilder();
+        tmp.append("QUEST AREA ");
+        tmp.append(Area);
+        tmp.append("\n-------------------------------\nDeskripsi : ");
+        tmp.append(Deskripsi);
+        tmp.append("\nLokasi    : ");
+        for(Lokasi tempLokasi : listLokasi) {
+            tmp.append("\n   + ");
+            tmp.append(tempLokasi.getLocationName());
+        }
+        
+        return tmp.toString();
     }
     
     /*

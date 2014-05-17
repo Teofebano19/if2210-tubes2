@@ -6,6 +6,8 @@
 
 package travelprof;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andre
@@ -18,6 +20,7 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
         this.setLocationRelativeTo(null); // mengeset jadi center
+        this.getRootPane().setDefaultButton(jButton1);
     }
 
     /**
@@ -39,7 +42,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
+        setTitle("Login bersama Professor");
         setResizable(false);
 
         label1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -52,6 +55,11 @@ public class LoginForm extends javax.swing.JFrame {
         label3.setText("Password");
 
         jButton1.setLabel("Masuk");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
@@ -108,10 +116,25 @@ public class LoginForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("Masuk ke aplikasi");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Pengguna p = new Pengguna(jTextField1.getText(), "");
+        if (UserData.bacaFile(p)){
+            if (p.getPassword().equals(jPasswordField1.getText())){
+                FormMain mainan = new FormMain(p);
+                mainan.show();
+                this.hide();
+            }else{
+                JOptionPane.showMessageDialog(null, "Password anda salah!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Tidak ada user " + jTextField1.getText()  + " ditemukan!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
