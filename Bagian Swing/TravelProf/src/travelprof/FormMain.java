@@ -201,11 +201,12 @@ public class FormMain extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Lokasi " + jTextField1.getText() + " sudah pernah anda kunjungi!", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 pengguna.addVisitedLocation(new Lokasi(jTextField1.getText()));
+                pengguna.upExp10();
                 list1.add(jTextField1.getText());
                 updateUser();
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Lokasi " + jTextField1.getText() + " tidak berada di area" + Q.getArea() + "!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Lokasi " + jTextField1.getText() + " tidak berada di area " + Q.getArea() + "!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         jTextField1.setText("");
         
