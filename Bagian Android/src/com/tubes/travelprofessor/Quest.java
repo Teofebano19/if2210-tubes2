@@ -57,6 +57,10 @@ public class Quest {
         }
     }
     
+    public void addLocation(Lokasi lokasi){
+    	listLokasi.add(lokasi);
+    }
+    
     public boolean isLocationsMember(String Location) {
         int i;
         for(i=0; i < listLokasi.size(); i++){
@@ -65,6 +69,16 @@ public class Quest {
             }
         }
         return false;
+    }
+    
+    public String LocationMember(Lokasi lokasi){
+    	int i;
+        for(i=0; i < listLokasi.size(); i++){
+            if (listLokasi.get(i).getLat() <= lokasi.getLat() && listLokasi.get(i).getLat2() >= lokasi.getLat() && listLokasi.get(i).getLng() <= lokasi.getLng() && listLokasi.get(i).getLng2() >= lokasi.getLng()){
+                return listLokasi.get(i).getLocationName();
+            }
+        }
+        return lokasi.getLocationName();
     }
     
     public String showQuest() {

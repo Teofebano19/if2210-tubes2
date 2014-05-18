@@ -80,8 +80,27 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView4"
             android:layout_below="@+id/textView4"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="50dp"
+            android:onClick="onClickVerify"
             android:text="Verify Location" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/button1"
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="24dp"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textView3"
+            android:layout_below="@+id/button1"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/abc_ab_solid_light_holo" />
 
     </RelativeLayout>
 

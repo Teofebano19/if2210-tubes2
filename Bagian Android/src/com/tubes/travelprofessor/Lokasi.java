@@ -9,6 +9,24 @@ public class Lokasi {
     private float Lat2;
     private float Lng2;
     
+    public float getLat(){
+    	return Lat;
+    }
+    
+    public float getLng(){
+    	return Lng;
+    }
+    
+    public float getLat2(){
+    	return Lat2;
+    }
+    
+    public float getLng2(){
+    	return Lng2;
+    }
+    
+    
+    
     public Lokasi(String initName) {
         NamaLokasi = initName;
         Lat = 0;

@@ -20,7 +20,7 @@ import android.content.Context;
 
 public class UserData {
     
-    public static boolean bacaFile(Context context, Pengguna pengguna){
+    public static boolean bacaFile(Context context, Pengguna pengguna, boolean l){
          try {
  //, filename
             File fXmlFile = new File(context.getFilesDir(),  pengguna.getUsername() +  "_data.xml");
@@ -40,19 +40,20 @@ public class UserData {
                 pengguna.setInit(Integer.parseInt(eElement.getElementsByTagName("level").item(0).getTextContent()), Long.parseLong(eElement.getElementsByTagName("exp").item(0).getTextContent()), eElement.getElementsByTagName("password").item(0).getTextContent());
             }
 
-                    
-            NodeList nLokasi = doc.getElementsByTagName("lokasi");
-
-            for (int temp = 0; temp < nLokasi.getLength(); temp++) {
-
-                    Node lok = nLokasi.item(temp);
-
-                    if (lok.getNodeType() == Node.ELEMENT_NODE) {
-
-                            Element lokas = (Element) lok;
-                            pengguna.addVisitedLocation(new Lokasi(lokas.getTextContent()));
-
-                    }
+            if (!l) {        
+	            NodeList nLokasi = doc.getElementsByTagName("lokasi");
+	
+	            for (int temp = 0; temp < nLokasi.getLength(); temp++) {
+	
+	                    Node lok = nLokasi.item(temp);
+	
+	                    if (lok.getNodeType() == Node.ELEMENT_NODE) {
+	
+	                            Element lokas = (Element) lok;
+	                            pengguna.addVisitedLocation(new Lokasi(lokas.getTextContent()));
+	
+	                    }
+	            }
             }
             return true;
         } catch (Exception e) {

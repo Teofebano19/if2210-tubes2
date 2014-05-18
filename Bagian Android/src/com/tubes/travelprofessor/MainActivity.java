@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		Pengguna pengguna = new Pengguna(mEdit1.getText().toString(), "");
 		
-		if (UserData.bacaFile(v.getContext(), pengguna)) {
+		if (UserData.bacaFile(v.getContext(), pengguna, true)) {
 			if (pengguna.getPassword().equals(mEdit2.getText().toString())){
 				Intent mainIntent=new Intent(v.getContext(),Professor.class);
 				mainIntent.putExtra("pengguna", pengguna);
