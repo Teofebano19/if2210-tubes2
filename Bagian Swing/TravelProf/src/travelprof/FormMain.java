@@ -41,6 +41,9 @@ public class FormMain extends javax.swing.JFrame {
         Q.addLocations("Ancol,Monas,Museum Geje,Kebun Binatang,Kampung Deret,Pulau Seribu");
         Q.editDescription("Ibu Kota Negara Indonesia");
         
+        // menangani asersi
+        assert(Q.getDescription() != "Tidak ada deskripsi");
+        
         jTextArea1.setText(Q.showQuest());
     }
     

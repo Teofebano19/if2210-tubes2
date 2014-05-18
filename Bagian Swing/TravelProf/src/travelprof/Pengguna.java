@@ -98,6 +98,7 @@ public class Pengguna {
     }
     
     public void upExp10() {
+        long temp = Exp+10;
         if(isLvlUp(10)) {
             long nextLevelExptemp = nextLevelExp;
             levelUp();

@@ -127,7 +127,8 @@ public class LoginForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Pengguna p = new Pengguna(jTextField1.getText(), "");
-        if (UserData.bacaFile(p)){
+        try{
+            UserData.bacaFile(p);
             if (p.getPassword().equals(jPasswordField1.getText())){
                 FormMain mainan = new FormMain(p);
                 mainan.show();
@@ -135,7 +136,7 @@ public class LoginForm extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Password anda salah!", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
+        }catch (LoginFailedException x){
             JOptionPane.showMessageDialog(null, "Tidak ada user " + jTextField1.getText()  + " ditemukan!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
