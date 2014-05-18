@@ -98,8 +98,7 @@ public class Pengguna {
     }
     
     public void upExp10() {
-        long temp = Exp+10;
-        if(temp > nextLevelExp) {
+        if(isLvlUp(10)) {
             long nextLevelExptemp = nextLevelExp;
             levelUp();
             Exp = 0;
@@ -133,5 +132,19 @@ public class Pengguna {
         System.out.println("LEVEL "+Level);
         System.out.println("Exp : "+Exp);
         System.out.println("Next Level Experience : "+nextLevelExp);
+    }
+    
+    public long getRemainingExp(){
+        return (nextLevelExp - Exp);
+    }
+    
+    public boolean isLvlUp (long addExp){
+        long temp = Exp + addExp;
+        if (temp >= nextLevelExp){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
