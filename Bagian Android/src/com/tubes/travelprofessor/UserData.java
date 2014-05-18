@@ -2,24 +2,28 @@ package com.tubes.travelprofessor;
 
 
 import java.io.File;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import android.content.Context;
+
 public class UserData {
     
-    public static boolean bacaFile(Pengguna pengguna){
+    public static boolean bacaFile(Context context, Pengguna pengguna){
          try {
- 
-            File fXmlFile = new File("./" + pengguna.getUsername() +  "_data.xml");
+ //, filename
+            File fXmlFile = new File(context.getFilesDir(),  pengguna.getUsername() +  "_data.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
@@ -57,7 +61,7 @@ public class UserData {
         }
     }
     
-    public static void writeUser(Pengguna pengguna){
+    public static void writeUser(Context context, Pengguna pengguna){
     
       try {
         
@@ -106,7 +110,7 @@ public class UserData {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File("./" + pengguna.getUsername() +  "_data.xml"));
+        StreamResult result = new StreamResult(new File(context.getFilesDir(),  pengguna.getUsername() +  "_data.xml"));
 
         // Output to console for testing
         // StreamResult result = new StreamResult(System.out);

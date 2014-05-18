@@ -1,11 +1,12 @@
 package com.tubes.travelprofessor;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Pengguna {
+public class Pengguna implements Serializable {
     private final String Username;
     private String Password;
     private int Level;

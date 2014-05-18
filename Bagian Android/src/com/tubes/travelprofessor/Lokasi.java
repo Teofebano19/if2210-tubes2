@@ -13,12 +13,24 @@ public class Lokasi {
         NamaLokasi = initName;
         Lat = 0;
         Lng = 0;
+        Lat2 = 0;
+        Lng2 = 0;
+    }
+    
+    public Lokasi(String initName, float Lat, float Lng, float Lat2, float Lng2){
+    	NamaLokasi = initName;
+        this.Lat = Lat;
+        this.Lng = Lng;
+        this.Lat2 = Lat2;
+        this.Lng2 = Lng2;
     }
     
     public void copyLocation(Lokasi K) {
         NamaLokasi = K.NamaLokasi;
         Lat = K.Lat;
         Lng = K.Lng;
+        Lat2 = K.Lat2;
+        Lng2 = K.Lng2;
     }
     
     public String getLocationName() {
