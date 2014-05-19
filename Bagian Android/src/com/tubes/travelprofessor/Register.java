@@ -49,9 +49,10 @@ public class Register extends ActionBarActivity {
 		
 		Pengguna p = new Pengguna(mEdit1.getText().toString(), "");
 		
-		if (UserData.bacaFile(v.getContext(), p, true)){
+		try{
+			UserData.bacaFile(v.getContext(), p, true);
 			Toast.makeText(this, "User " + mEdit1.getText().toString() + " sudah terdaftar!", Toast.LENGTH_LONG).show();
-		}else{
+		}catch(LoginFailedException x){
 			p.setInit(0, 0, mEdit2.getText().toString());
 			UserData.writeUser(v.getContext(), p);
 			

@@ -6,7 +6,6 @@
 
 package travelingcmd;
 
-import com.sun.org.apache.bcel.internal.generic.GOTO;
 import java.util.*;
 
 /**
@@ -42,6 +41,7 @@ public class TravelingCMD {
             System.out.println("-------------------------------------------------------");
         }
         
+        assert(Input.equalsIgnoreCase("Login"));
         Login();
         
         Q.showQuest();
@@ -82,15 +82,15 @@ public class TravelingCMD {
     
     public static void Register() {
         Scanner cin = new Scanner(System.in);
-        String Username,Password;
-        System.out.println("-------------REGISTER---------------");
-        System.out.print("UserName : "); Username = cin.nextLine();
-        System.out.print("Password : "); Password = cin.nextLine();
-        System.out.println("------------------------------------");
-        if(UserData.bacaFile(new Pengguna(Username,Password))) {
-            System.out.println("Username "+Username+" Sudah digunakan");
-        }
-        else {
+        String Username = null,Password = null;
+        try {
+            System.out.println("-------------REGISTER---------------");
+            System.out.print("UserName : "); Username = cin.nextLine();
+            System.out.print("Password : "); Password = cin.nextLine();
+            System.out.println("------------------------------------");
+            UserData.bacaFile(new Pengguna(Username,Password));
+            System.out.println("Username "+Username+" Sudah terdaftar");
+        } catch(LoginFailedException x) {  
             UserData.writeUser(new Pengguna(Username,Password));
             System.out.println("Register Berhasil");
         }
@@ -99,23 +99,23 @@ public class TravelingCMD {
     public static void Login() {
         String Username,Password;
         Scanner cin = new Scanner(System.in);
-        System.out.println("----------------Login FORM------------------");
-        System.out.print("Username : "); Username = cin.nextLine();
-        System.out.print("Password : "); Password = cin.nextLine();
-        System.out.println("-------------------------------------------");
-        P = new Pengguna(Username,Password);
-        
-        while (!UserData.bacaFile(P)) {
-            System.out.println("------------Username/Password Salah------------");
-            System.out.println("Login FORM");
+        try {
+            System.out.println("----------------Login FORM------------------");
             System.out.print("Username : "); Username = cin.nextLine();
             System.out.print("Password : "); Password = cin.nextLine();
-            System.out.println("-----------------------------------------------");
+            System.out.println("-------------------------------------------");
             P = new Pengguna(Username,Password);
-        }
-        
-        System.out.println("----------------");
-        System.out.println("|Berhasil Masuk|");
-        System.out.println("----------------");
+            UserData.bacaFile(P);
+            if(Password.equals(P.getPassword())) {
+                System.out.println("----------------");
+                System.out.println("|Berhasil Masuk|");
+                System.out.println("----------------");
+            }
+            else {
+                System.out.println("Username/Password Salah");
+            }
+        } catch(LoginFailedException x) {
+            System.out.println("Username/Password Salah");
+        } //Intinya sistem ga mau ngasi tau yang salah password doang ato usernamenya juga salah
     }
 }

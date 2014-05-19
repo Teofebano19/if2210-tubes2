@@ -43,10 +43,10 @@ public class Pengguna {
         }
     }
     
-    public void setInit(int lv, long exp, String pass){
-        Level = lv;
-        Exp = exp;
-        Password = pass;
+    public void setInit(int newLevel,long newExp,String newPassword) {
+        Level = newLevel;
+        Exp = newExp;
+        Password = newPassword;
     }
     
     public String getUsername(){
@@ -109,9 +109,6 @@ public class Pengguna {
     public long getNextLevelExp() {
         return nextLevelExp;
     }
-    
-    
-    
     /*
     public void upExp(long Experience) {
         long temp = Exp+Experience;

@@ -27,7 +27,7 @@ import org.w3c.dom.NodeList;
  */
 public class UserData {
     
-    public static boolean bacaFile(Pengguna pengguna){
+    public static void bacaFile(Pengguna pengguna) throws LoginFailedException{
          try {
  
             File fXmlFile = new File("D:\\" + pengguna.getUsername() +  "_data.xml");
@@ -47,7 +47,6 @@ public class UserData {
                 pengguna.setInit(Integer.parseInt(eElement.getElementsByTagName("level").item(0).getTextContent()), Long.parseLong(eElement.getElementsByTagName("exp").item(0).getTextContent()), eElement.getElementsByTagName("password").item(0).getTextContent());
             }
 
-                    
             NodeList nLokasi = doc.getElementsByTagName("lokasi");
 
             for (int temp = 0; temp < nLokasi.getLength(); temp++) {
@@ -61,9 +60,8 @@ public class UserData {
 
                     }
             }
-            return true;
         } catch (Exception e) {
-            return false;
+            throw new LoginFailedException();
             //e.printStackTrace();
         }
     }

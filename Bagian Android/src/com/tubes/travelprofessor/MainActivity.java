@@ -53,7 +53,8 @@ public class MainActivity extends ActionBarActivity {
 		
 		Pengguna pengguna = new Pengguna(mEdit1.getText().toString(), "");
 		
-		if (UserData.bacaFile(v.getContext(), pengguna, true)) {
+		try{
+			UserData.bacaFile(v.getContext(), pengguna, true);
 			if (pengguna.getPassword().equals(mEdit2.getText().toString())){
 				Intent mainIntent=new Intent(v.getContext(),Professor.class);
 				mainIntent.putExtra("pengguna", pengguna);
@@ -63,10 +64,11 @@ public class MainActivity extends ActionBarActivity {
 			}else{
 				 Toast.makeText(this, "Invalid Password", Toast.LENGTH_LONG).show();
 			}
-			
-		}else{
-			 Toast.makeText(this, "Unknown User", Toast.LENGTH_LONG).show();
+		}catch(LoginFailedException x){
+			Toast.makeText(this, "Unknown User", Toast.LENGTH_LONG).show();
 		}
+		
+		
     } 
 
 	@Override

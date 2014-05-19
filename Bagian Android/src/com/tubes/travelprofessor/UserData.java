@@ -20,7 +20,7 @@ import android.content.Context;
 
 public class UserData {
     
-    public static boolean bacaFile(Context context, Pengguna pengguna, boolean l){
+    public static void bacaFile(Context context, Pengguna pengguna, boolean l) throws LoginFailedException{
          try {
  //, filename
             File fXmlFile = new File(context.getFilesDir(),  pengguna.getUsername() +  "_data.xml");
@@ -55,10 +55,9 @@ public class UserData {
 	                    }
 	            }
             }
-            return true;
         } catch (Exception e) {
-            return false;
-            //e.printStackTrace();
+        	throw new LoginFailedException();
+        	//e.printStackTrace();
         }
     }
     

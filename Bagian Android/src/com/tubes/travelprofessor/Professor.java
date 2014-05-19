@@ -103,8 +103,11 @@ public class Professor extends ActionBarActivity implements LocationListener{
 		Intent i = getIntent();
 		pengguna = (Pengguna) i.getSerializableExtra("pengguna");
 		
-		UserData.bacaFile(getApplicationContext(), pengguna, false);
-		
+		try{
+			UserData.bacaFile(getApplicationContext(), pengguna, false);
+		}catch(LoginFailedException x){
+			finish(); //gagal baca data
+		}
 		updateDataUser();
 		imageView = (ImageView) findViewById(R.id.imageView1);
 		txtLoc = (TextView) findViewById(R.id.textView8);
@@ -114,7 +117,7 @@ public class Professor extends ActionBarActivity implements LocationListener{
 		Criteria criteria = new Criteria();
 	    provider = locationManager.getBestProvider(criteria, false);
 	    
-	    provider = "gps"; // untuk keperluan pengujian di emulator
+	    //provider = "gps"; // untuk keperluan pengujian di emulator
 	    
 	    location = locationManager.getLastKnownLocation(provider);
 	    if (location != null) {
@@ -129,9 +132,15 @@ public class Professor extends ActionBarActivity implements LocationListener{
 		Q = new Quest("Jakarta");
         Q.setArea(Q.getArea().toUpperCase());
         Q.editDescription("Ibu Kota Negara Indonesia");
+        
+        assert (Q.getDescription() != "Tidak ada deskripsi");
+        
         Q.addLocation(new Lokasi("Monas", 20, 30, 30, 40));
         Q.addLocation(new Lokasi("Ancol", 30, 40, 40, 50));
         Q.addLocation(new Lokasi("Musium", 60, 90, 70, 100));
+        Q.addLocation(new Lokasi("ITB Coks", -7, 107, -6, 108));
+        
+        
         
         
 		if (savedInstanceState == null) {
