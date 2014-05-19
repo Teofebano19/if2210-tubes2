@@ -123,7 +123,6 @@ public class Pengguna {
             Exp = temp;
         }
     } */
-    
     public void addVisitedLocation(Lokasi Location) {
         listLokasiTerkunjungi.add(Location);
     }

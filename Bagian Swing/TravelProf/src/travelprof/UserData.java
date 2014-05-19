@@ -79,7 +79,7 @@ public class UserData {
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
         // root elements
-        Document doc = docBuilder.newDocument();
+        Document doc =  docBuilder.newDocument();
         Element rootElement = doc.createElement("USERDATA");
         doc.appendChild(rootElement);
 
@@ -112,13 +112,13 @@ public class UserData {
             
             lok = pengguna.getLokasi(i++);
         }
-        // write the content into xml file
+        
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
         StreamResult result = new StreamResult(new File("D:\\" + pengguna.getUsername() +  "_data.xml"));
 
-        // Output to console for testing
+        
         // StreamResult result = new StreamResult(System.out);
 
         transformer.transform(source, result);

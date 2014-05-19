@@ -24,7 +24,7 @@ public class FormMain extends javax.swing.JFrame {
         int i = 0; Lokasi lokasi;
         
         initComponents();
-        this.setLocationRelativeTo(null); // mengeset jadi center
+        this.setLocationRelativeTo(null); // mengeset menjadi center
         
         pengguna = user;
         
